@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>ELECSPHIRE 2026 | Vidya Academy of Science And Technology (VAST)</title>
+  <meta name="description" content="Official Portal for ELECSPHIRE 2026 - National Level Tech Fest presented by Department of Electrical & Electronics Engineering (EEE), Vidya Academy of Science and Technology (VAST), Thalakottukara." />
+  <meta name="theme-color" content="#07090e" />
+
+  <!-- Google Fonts Preconnect & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Ambient Animated Cyber Grid & Canvas Particle Layer -->
+  <div class="bg-ambient-layer" aria-hidden="true"></div>
+  <canvas id="canvas-particles" aria-hidden="true"></canvas>
+
+  <div class="content-wrapper">
+
+    <!-- 0. TOP ANNOUNCEMENT & EMERGENCY QUICK HELP STRIP -->
+    <header class="emergency-top-bar" role="banner">
+      <div class="emergency-top-left">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span><strong>EVENT DESK LIVE:</strong> ELECSPHIRE 2026 • Dept. of EEE, VAST</span>
+      </div>
+      <div class="emergency-top-contacts" id="emergency-top-contacts">
+        <!-- Dynamically rendered top contacts from fest-data.js -->
+        <a href="tel:+919188580811" class="emergency-chip">Help Desk: <strong>+91 91885 80811</strong></a>
+        <a href="tel:+919188580811" class="emergency-chip urgent">Emergency: <strong>+91 91885 80811</strong></a>
+      </div>
+    </header>
+
+    <!-- NAVIGATION BAR (STICKY) -->
+    <div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar" aria-label="Main Navigation">
+          <!-- Brand Logo -->
+          <a href="#home" class="nav-brand">
+            <div class="brand-icon-box">EL</div>
+            <div class="brand-info">
+              <span class="brand-title" data-bind="festShortName">ELECSPHIRE</span>
+              <span class="brand-college" data-bind="collegeName">Vidya Academy of Science And Technology (VAST)</span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation Links -->
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#programs" class="nav-link">Programs</a></li>
+            <li><a href="#schedule" class="nav-link">Schedule</a></li>
+            <li><a href="#venues" class="nav-link">Venues</a></li>
+            <li><a href="#coordinators" class="nav-link">Coordinators</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#info-faq" class="nav-link">Info & FAQ</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+
+          <!-- Nav Action CTA -->
+          <div class="nav-actions">
+            <a href="#programs" class="btn btn-primary btn-sm btn-explore-nav">
+              <span>Explore Events</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <button class="nav-toggle-btn" id="nav-toggle" aria-label="Toggle Navigation Menu">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div class="mobile-nav-drawer" id="mobile-nav" aria-label="Mobile Navigation">
+      <div>
+        <div class="mobile-nav-header">
+          <div class="nav-brand">
+            <div class="brand-icon-box">EL</div>
+            <div class="brand-info">
+              <span class="brand-title" data-bind="festShortName">ELECSPHIRE</span>
+              <span class="brand-college" data-bind="collegeName">Vidya Academy of Science And Technology (VAST)</span>
+            </div>
+          </div>
+          <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close Mobile Menu">&times;</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="#home">Home <span>&rarr;</span></a></li>
+          <li><a href="#about">About the Fest <span>&rarr;</span></a></li>
+          <li><a href="#programs">All Programs & Events <span>&rarr;</span></a></li>
+          <li><a href="#schedule">Event Timetable <span>&rarr;</span></a></li>
+          <li><a href="#venues">Venues & Locations <span>&rarr;</span></a></li>
+          <li><a href="#coordinators">Coordinators Directory <span>&rarr;</span></a></li>
+          <li><a href="#gallery">Fest Gallery <span>&rarr;</span></a></li>
+          <li><a href="#info-faq">Guidelines & FAQs <span>&rarr;</span></a></li>
+          <li><a href="#contact">Guest Help & Inquiries <span>&rarr;</span></a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-nav-footer">
+        <a href="#programs" class="btn btn-primary" style="width: 100%;">Explore All Events</a>
+        <button class="btn btn-secondary" onclick="openEmergencySheet()" style="width: 100%; border-color: rgba(239, 68, 68, 0.4); color: #f87171;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>Emergency & Quick Help</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+      <!-- 1. HOME / HERO SECTION -->
+      <section id="home" class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            
+            <!-- College Pill -->
+            <div class="hero-college-pill">
+              <span class="pulse-dot"></span>
+              <span data-bind="collegeName">[COLLEGE NAME]</span>
+              <span>•</span>
+              <span data-bind="department">Department of Computer Science & Engineering</span>
+            </div>
+
+            <!-- Main Title & Tagline -->
+            <h1 class="hero-title">
+              <span class="title-gradient" data-bind="festName">INNOVA TECH FEST 2026</span>
+            </h1>
+            <p class="hero-tagline" data-bind="tagline">"Where Technology Meets Innovation"</p>
+            <p class="hero-description" data-bind="themeDescription">
+              A national-level congregation of brilliant engineering minds, coders, roboticists, and tech innovators competing across 25+ cutting-edge events.
+            </p>
+
+            <!-- Quick Metadata Strip -->
+            <div class="hero-meta-strip">
+              <div class="hero-meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-bind="eventDate">[EVENT DATE]</span>
+              </div>
+              <div class="hero-meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span data-bind="venue">[COLLEGE CAMPUS / VENUE]</span>
+              </div>
+              <div class="hero-meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                <span>₹2,50,000+ Prize Pool</span>
+              </div>
+            </div>
+
+            <!-- Real-Time Countdown Timer -->
+            <div class="countdown-box" aria-label="Countdown to Fest Kickoff">
+              <div class="countdown-title">
+                <span class="pulse-dot"></span>
+                <span id="countdown-status-text">Countdown to Grand Launch</span>
+              </div>
+              <div class="countdown-grid">
+                <div class="countdown-unit">
+                  <span class="countdown-val" id="cd-days">00</span>
+                  <span class="countdown-lbl">Days</span>
+                </div>
+                <div class="countdown-unit">
+                  <span class="countdown-val" id="cd-hours">00</span>
+                  <span class="countdown-lbl">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                  <span class="countdown-val" id="cd-mins">00</span>
+                  <span class="countdown-lbl">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                  <span class="countdown-val" id="cd-secs">00</span>
+                  <span class="countdown-lbl">Seconds</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Two Main Action Buttons -->
+            <div class="hero-cta-group">
+              <a href="#programs" class="btn btn-primary btn-lg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Explore Programs</span>
+              </a>
+              <a href="#contact" class="btn btn-secondary btn-lg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>Contact Us & Help</span>
+              </a>
+              <a href="#schedule" class="btn btn-outline-neon btn-lg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Event Timetable</span>
+              </a>
+            </div>
+
+            <!-- Event Highlight Stats Counter Ticker -->
+            <div class="hero-stats-row" id="hero-stats-container">
+              <!-- Dynamically populated from fest-data.js -->
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ABOUT THE TECH FEST SECTION -->
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              About The Festival
+            </span>
+            <h2 class="section-title">A Catalyst for <span class="gradient-text">Technological Excellence</span></h2>
+            <p class="section-subtitle">
+              Learn about our legacy, mission, and what awaits guests, participants, and industry leaders at this premier technology summit.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <!-- Text Content -->
+            <div class="about-text">
+              <h3>Fostering Ingenuity, Code & Engineering</h3>
+              <p>
+                <strong data-bind="festName">INNOVA TECH FEST 2026</strong> is the flagship national symposium hosted annually by <span data-bind="collegeName">[COLLEGE NAME]</span>. Now in its 12th landmark edition, the festival unites over 3,000 curious tech minds, coders, roboticists, startup visionaries, and researchers under one high-energy campus roof.
+              </p>
+              <p>
+                The event bridges the divide between classroom theory and real-world industrial innovation. Through competitive coding, 24-hour hackathons, combat robotics, hardware exhibitions, and executive masterclasses led by Silicon Valley and ISRO scientists, participants test their limits, win lucrative cash rewards, and network with leading tech scouts.
+              </p>
+
+              <!-- Four Core Pillars -->
+              <div class="about-pillars">
+                <div class="pillar-item">
+                  <div class="pillar-icon">⚡</div>
+                  <h4 class="pillar-title">Who Can Participate?</h4>
+                  <p class="pillar-desc">Open to undergraduate, postgraduate, and diploma students from any college or university across India.</p>
+                </div>
+                <div class="pillar-item">
+                  <div class="pillar-icon">🎯</div>
+                  <h4 class="pillar-title">Main Objectives</h4>
+                  <p class="pillar-desc">To inspire problem-solving, promote open-source collaboration, and incubate impactful student startups.</p>
+                </div>
+                <div class="pillar-item">
+                  <div class="pillar-icon">🚀</div>
+                  <h4 class="pillar-title">What to Expect?</h4>
+                  <p class="pillar-desc">24+ technical events, hands-on AI workshops, live gaming arenas, startup pitches, and cultural neon nights.</p>
+                </div>
+                <div class="pillar-item">
+                  <div class="pillar-icon">🏛️</div>
+                  <h4 class="pillar-title">Host Institution</h4>
+                  <p class="pillar-desc">Organized by <span data-bind="department">Department of Computer Science & Engineering</span> with modern lab infrastructure.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Visual Card -->
+            <div class="about-visual-card">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="terminal-title">fest-manifest.json</span>
+                <span style="font-size: 0.75rem; color: var(--neon-cyan);">v2026.1.0</span>
+              </div>
+              <div class="terminal-body">
+                <span class="code-comment">// Official Tech Fest Configuration</span><br />
+                {<br />
+                &nbsp;&nbsp;<span class="code-key">"fest"</span>: <span class="code-string">"INNOVA TECH FEST 2026"</span>,<br />
+                &nbsp;&nbsp;<span class="code-key">"institution"</span>: <span class="code-string">"[COLLEGE NAME]"</span>,<br />
+                &nbsp;&nbsp;<span class="code-key">"edition"</span>: <span class="code-num">12</span>,<br />
+                &nbsp;&nbsp;<span class="code-key">"prizePool"</span>: <span class="code-string">"₹2,50,000 INR"</span>,<br />
+                &nbsp;&nbsp;<span class="code-key">"schedule"</span>: {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"starts"</span>: <span class="code-string">"Oct 16, 2026 09:00 IST"</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-key">"ends"</span>: <span class="code-string">"Oct 17, 2026 21:30 IST"</span><br />
+                &nbsp;&nbsp;},<br />
+                &nbsp;&nbsp;<span class="code-key">"tracks"</span>: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Generative AI & LLMs"</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Heavyweight RoboWars"</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Quantum Computing"</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"ZeroDay Cybersecurity CTF"</span><br />
+                &nbsp;&nbsp;],<br />
+                &nbsp;&nbsp;<span class="code-key">"registrationStatus"</span>: <span class="code-highlight">"PORTAL_OPEN"</span><br />
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PROGRAMS / EVENTS SECTION (KEY SECTION) -->
+      <section id="programs" class="section" style="background: rgba(12, 16, 23, 0.5);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Competition & Activity Hub
+            </span>
+            <h2 class="section-title">Tech Fest <span class="gradient-text">Programs & Events</span></h2>
+            <p class="section-subtitle">
+              Explore our comprehensive lineup of 24+ technical challenges, workshops, hackathons, and gaming tournaments. Filter by category or search instantly.
+            </p>
+          </div>
+
+          <!-- Interactive Search & Filter Controls Wrapper -->
+          <div class="programs-filter-wrapper">
+            <!-- Search Bar -->
+            <div class="search-bar-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="programs-search" class="search-input" placeholder="Search by program name, coordinator, venue, or keywords (e.g. Hackathon, Python, Robotics, CTF)..." aria-label="Search Programs" />
+              <button id="search-clear" class="search-clear-btn" aria-label="Clear Search">&times;</button>
+            </div>
+
+            <!-- Category Filter Pills List -->
+            <div class="category-pills-list" id="category-pills" role="tablist">
+              <!-- Dynamically rendered from fest-data.js -->
+            </div>
+          </div>
+
+          <!-- Results Counter Bar -->
+          <div class="results-counter-bar">
+            <div id="programs-count-display">Showing programs...</div>
+            <div style="font-size: 0.8rem; color: var(--text-dim);">
+              Click <strong>"View Details"</strong> on any card for full rules, prizes & registration links.
+            </div>
+          </div>
+
+          <!-- Programs Dynamic Cards Grid -->
+          <div class="programs-grid" id="programs-grid">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. DETAILED PROGRAM MODAL CONTAINER (ACCESSIBLE POPUP) -->
+      <div class="modal-overlay" id="program-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-program-name">
+        <div class="modal-container" id="program-modal-dynamic-content">
+          <!-- Dynamically populated when user clicks "View Details" -->
+        </div>
+      </div>
+
+      <!-- 5. SCHEDULE / EVENT TIMETABLE SECTION -->
+      <section id="schedule" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Master Itinerary
+            </span>
+            <h2 class="section-title">Event <span class="gradient-text">Schedule & Timetable</span></h2>
+            <p class="section-subtitle">
+              Plan your visit effortlessly. Track sessions across multiple days, filter by venue or category, and never miss a key event.
+            </p>
+          </div>
+
+          <!-- Schedule Filter Controls -->
+          <div class="schedule-controls">
+            <!-- Day Selector Tabs -->
+            <div class="schedule-day-tabs">
+              <button class="day-tab-btn active" data-day="1">Day 1 (Oct 16, 2026)</button>
+              <button class="day-tab-btn" data-day="2">Day 2 (Oct 17, 2026)</button>
+              <button class="day-tab-btn" data-day="0">All Days Itinerary</button>
+            </div>
+
+            <!-- Filters Group -->
+            <div class="schedule-filters-group">
+              <select id="schedule-venue-filter" class="schedule-select" aria-label="Filter Schedule by Venue">
+                <option value="all">All Venues</option>
+              </select>
+              <select id="schedule-category-filter" class="schedule-select" aria-label="Filter Schedule by Category">
+                <option value="all">All Categories</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Schedule Timeline Container -->
+          <div class="timeline-container" id="schedule-timeline-container">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6. VENUE / CAMPUS LOCATIONS SECTION -->
+      <section id="venues" class="section" style="background: rgba(12, 16, 23, 0.5);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Campus Wayfinding
+            </span>
+            <h2 class="section-title">Venues & <span class="gradient-text">Locations Guide</span></h2>
+            <p class="section-subtitle">
+              Find exactly where every event is happening. Check building names, room numbers, capacities, and step-by-step walking directions.
+            </p>
+          </div>
+
+          <!-- Venues Cards Grid -->
+          <div class="venues-grid" id="venues-grid">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+          <!-- Campus Map Card & Google Maps Integration -->
+          <div class="campus-map-card">
+            <div>
+              <span class="badge badge-venue" style="margin-bottom: 0.85rem;">Interactive Campus Locator</span>
+              <h3 style="font-size: 1.8rem; color: #fff; margin-bottom: 0.85rem;">Navigating VAST Campus (South Block)</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                Volunteers wearing neon <strong>"ELECSPHIRE CREW"</strong> badges and clearly marked help kiosks are stationed at VAST Main Gate, South Block Entrance, and corridors to guide you to your session.
+              </p>
+              <ul class="modal-list" style="margin-bottom: 2rem;">
+                <li><strong>Main Gate:</strong> Direct vehicle entry & visitor parking at Thalakottukara entrance.</li>
+                <li><strong>South Block:</strong> Core hub for ELECSPHIRE registration desk, EEE Labs, and Main Audi.</li>
+                <li><strong>South Block Annex:</strong> Robotics Combat Arena & Project Exhibition Stalls.</li>
+              </ul>
+              <a href="https://maps.app.goo.gl/1ZoqouDMHwZgBVuo8" target="_blank" rel="noopener" class="btn btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                <span>Open Campus in Google Maps</span>
+              </a>
+            </div>
+
+            <div class="map-visual-placeholder">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.905626359567!2d76.1362629!3d10.6052731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba792a7dc4c9597%3A0xb3a824cbfe08e82a!2sVidya%20Academy%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin" 
+                title="Vidya Academy of Science and Technology Campus Map"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. COORDINATORS SECTION -->
+      <section id="coordinators" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Organizing Committee
+            </span>
+            <h2 class="section-title">Festival <span class="gradient-text">Coordinators Directory</span></h2>
+            <p class="section-subtitle">
+              Need assistance regarding registrations, event rules, accommodation, or technical logistics? Connect directly with our team leads.
+            </p>
+          </div>
+
+          <!-- Coordinators Category Tabs -->
+          <div class="coordinators-filter-tabs" id="coord-filter-tabs">
+            <button class="coord-filter-btn active" data-group="all">All Coordinators</button>
+            <button class="coord-filter-btn" data-group="overall">Overall Leads</button>
+            <button class="coord-filter-btn" data-group="faculty">Faculty Conveners</button>
+            <button class="coord-filter-btn" data-group="student">Student Leads</button>
+            <button class="coord-filter-btn" data-group="program">Program In-Charges</button>
+            <button class="coord-filter-btn" data-group="support">Technical Support</button>
+          </div>
+
+          <!-- Coordinators Cards Grid -->
+          <div class="coordinators-grid" id="coordinators-grid">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 8. GUEST HELP & CONTACT SECTION -->
+      <section id="contact" class="section" style="background: rgba(12, 16, 23, 0.5);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Guest & Attendee Support
+            </span>
+            <h2 class="section-title">Need Help During <span class="gradient-text">The Tech Fest?</span></h2>
+            <p class="section-subtitle">
+              Whether you are an outstation participant, college guest, or first-time visitor, our support team is available 24/7 to assist you.
+            </p>
+          </div>
+
+          <!-- Quick Assistance Action Cards -->
+          <div class="help-options-grid">
+            <div class="help-card">
+              <div class="help-icon-circle">📞</div>
+              <h3 class="help-card-title">Call Central Desk</h3>
+              <p class="help-card-desc">Direct hotline for live venue guidance, schedule changes, and general help.</p>
+              <a href="tel:+919876500112" class="btn btn-outline-neon btn-sm">Call +91 98765 00112</a>
+            </div>
+
+            <div class="help-card">
+              <div class="help-icon-circle" style="color: #25d366; border-color: rgba(37, 211, 102, 0.4); background: rgba(37, 211, 102, 0.1);">💬</div>
+              <h3 class="help-card-title">WhatsApp Support</h3>
+              <p class="help-card-desc">Instant messaging desk for team registration verification & QR code issues.</p>
+              <a href="https://wa.me/919876543210?text=Hi%2C%20I%20need%20help%20at%20Tech%20Fest" target="_blank" rel="noopener" class="btn btn-sm" style="background: rgba(37, 211, 102, 0.2); color: #25d366; border: 1px solid #25d366;">Chat on WhatsApp</a>
+            </div>
+
+            <div class="help-card">
+              <div class="help-icon-circle">📍</div>
+              <h3 class="help-card-title">Find Physical Desk</h3>
+              <p class="help-card-desc">Admin Block Ground Floor Central Reception Portico (Open 24 Hours).</p>
+              <a href="#venues" class="btn btn-secondary btn-sm">View Location</a>
+            </div>
+
+            <div class="help-card">
+              <div class="help-icon-circle" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.1);">🚨</div>
+              <h3 class="help-card-title">Emergency / First Aid</h3>
+              <p class="help-card-desc">Campus health clinic with doctors, security control & on-duty ambulance.</p>
+              <button onclick="openEmergencySheet()" class="btn btn-sm" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444;">Emergency Sheet</button>
+            </div>
+          </div>
+
+          <!-- Contact Form & Details Grid -->
+          <div class="contact-container-grid">
+            <!-- Contact Info Panel -->
+            <div class="contact-info-panel">
+              <h3>Get In Touch</h3>
+              <p>
+                Have specific queries regarding accommodation, paper submissions, sponsorship, or campus access passes? Send us a message and our team will get back to you promptly.
+              </p>
+
+              <div class="contact-detail-items">
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon">📍</div>
+                  <div class="contact-detail-content">
+                    <h5>Campus Address</h5>
+                    <p data-bind="collegeAddress">[COLLEGE ADDRESS, TECH ROAD, INNOVATION ENCLAVE, PIN - 560001]</p>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon">✉️</div>
+                  <div class="contact-detail-content">
+                    <h5>Official Email</h5>
+                    <a href="mailto:fest2026@[COLLEGE-DOMAIN].edu.in" data-bind="collegeEmail">fest2026@[COLLEGE-DOMAIN].edu.in</a>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon">📱</div>
+                  <div class="contact-detail-content">
+                    <h5>Central Help Desk</h5>
+                    <a href="tel:+919876543210" data-bind="collegePhone">+91 98765 43210</a>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon">⏰</div>
+                  <div class="contact-detail-content">
+                    <h5>Support Hours</h5>
+                    <p>8:00 AM – 10:00 PM (Round-the-clock during 24hr Hackathon)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Contact Form -->
+            <form class="contact-form" id="guest-contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">Full Name *</label>
+                  <input type="text" id="contact-name" class="form-control" placeholder="e.g. Rahul Sharma" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-phone" class="form-label">Phone Number *</label>
+                  <input type="tel" id="contact-phone" class="form-control" placeholder="e.g. +91 98765 43210" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email Address *</label>
+                  <input type="email" id="contact-email" class="form-control" placeholder="e.g. rahul@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">Subject / Query Type</label>
+                  <select id="contact-subject" class="form-control">
+                    <option value="Registration Inquiry">Registration & Ticket Inquiries</option>
+                    <option value="Venue & Directions">Venue & Directions Help</option>
+                    <option value="Accommodation Request">Outstation Accommodation Request</option>
+                    <option value="Rules & Eligibility">Rules & Eligibility Clarification</option>
+                    <option value="Sponsorship & Partnership">Sponsorship & Stalls</option>
+                    <option value="Other">Other Question</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message / Details *</label>
+                <textarea id="contact-message" class="form-control" placeholder="Please describe how we can assist you..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>Submit Query to Help Desk</span>
+              </button>
+
+              <div id="form-feedback-msg" class="form-feedback" role="alert"></div>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 9. IMPORTANT INFORMATION & FAQS SECTION -->
+      <section id="info-faq" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Essential Visitor Guide
+            </span>
+            <h2 class="section-title">Important Information & <span class="gradient-text">FAQs</span></h2>
+            <p class="section-subtitle">
+              Clear guidelines on registration check-in, parking, food arrangements, accommodation, campus safety, and answers to common queries.
+            </p>
+          </div>
+
+          <!-- Guidelines Cards Grid -->
+          <div class="info-guide-grid" id="important-info-grid">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+          <!-- FAQ Accordion -->
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.6rem; color: #fff;">Frequently Asked Questions</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Quick answers to common questions about eligibility, rules, and facilities.</p>
+          </div>
+
+          <div class="faq-accordion" id="faq-accordion-container">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 10. GALLERY SECTION -->
+      <section id="gallery" class="section" style="background: rgba(12, 16, 23, 0.5);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              Visual Memories
+            </span>
+            <h2 class="section-title">Moments From <span class="gradient-text">Tech Fest</span></h2>
+            <p class="section-subtitle">
+              Glimpses of competitive intensity, robotic battles, late-night hackathon deployments, and unforgettable celebrations.
+            </p>
+          </div>
+
+          <!-- Gallery Photo Grid -->
+          <div class="gallery-grid" id="gallery-grid">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- LIGHTBOX MODAL FOR GALLERY -->
+      <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image Preview Lightbox">
+        <div class="lightbox-content-box">
+          <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+          <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Previous Photo">&#10094;</button>
+          <img src="" alt="" class="lightbox-img" id="lightbox-image" />
+          <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next Photo">&#10095;</button>
+          <div class="lightbox-caption" id="lightbox-caption-text"></div>
+        </div>
+      </div>
+
+      <!-- 11. SPONSORS & PARTNERS SECTION -->
+      <section id="sponsors" class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              Industry Collaboration
+            </span>
+            <h2 class="section-title">Sponsors & <span class="gradient-text">Partners</span></h2>
+            <p class="section-subtitle">
+              We express gratitude to our visionary technology sponsors and industry partners for empowering student innovators.
+            </p>
+          </div>
+
+          <div id="sponsors-container">
+            <!-- Dynamically populated from fest-data.js -->
+          </div>
+
+          <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+              Interested in partnering with our Tech Fest or setting up a recruitment booth?
+            </p>
+            <a href="#contact" class="btn btn-secondary btn-sm">Become a Festival Partner</a>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 12. FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-main-grid">
+          <!-- Col 1: Brand & College Info -->
+          <div class="footer-brand">
+            <h4 data-bind="festName">INNOVA TECH FEST 2026</h4>
+            <div class="footer-tagline" data-bind="tagline">"Where Technology Meets Innovation"</div>
+            <p class="footer-desc">
+              The premier national technology festival of <strong data-bind="collegeName">[COLLEGE NAME]</strong>. Celebrating innovation, coding, robotics, and creative problem-solving.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://www.instagram.com/psych_eee_vast?stkn=aDQxZ2R6dTVyb3U3" target="_blank" rel="noopener" class="social-circle-link" title="Follow @psych_eee_vast on Instagram" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="https://www.linkedin.com/school/vidya-academy-of-science-and-technology" target="_blank" rel="noopener" class="social-circle-link" title="VAST on LinkedIn" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a href="https://youtube.com/@VidyaAcademyThrissur" target="_blank" rel="noopener" class="social-circle-link" title="Vidya Academy on YouTube" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+              </a>
+              <a href="https://wa.me/919188580811?text=Hi%20Elecsphire%20Team%2C%20I%20have%20an%20inquiry%20regarding%20the%20Tech%20Fest" target="_blank" rel="noopener" class="social-circle-link" title="WhatsApp ELECSPHIRE Desk" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Col 2: Navigation Links -->
+          <div class="footer-col">
+            <h5>Quick Navigation</h5>
+            <ul class="footer-nav-list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About the Fest</a></li>
+              <li><a href="#programs">All Programs</a></li>
+              <li><a href="#schedule">Schedule & Timetable</a></li>
+              <li><a href="#venues">Venues & Map</a></li>
+              <li><a href="#coordinators">Coordinators</a></li>
+              <li><a href="#gallery">Fest Gallery</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Key Event Tracks -->
+          <div class="footer-col">
+            <h5>Program Tracks</h5>
+            <ul class="footer-nav-list">
+              <li><a href="#programs">Hack-a-Futurism 24Hr</a></li>
+              <li><a href="#programs">CodeSprint Speed DSA</a></li>
+              <li><a href="#programs">Heavyweight RoboWars</a></li>
+              <li><a href="#programs">Agentic AI Workshop</a></li>
+              <li><a href="#programs">InnoVenture Project Expo</a></li>
+              <li><a href="#programs">ZeroDay Security CTF</a></li>
+              <li><a href="#programs">CyberDome Valorant</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Official Contacts -->
+          <div class="footer-col">
+            <h5>Official Contact</h5>
+            <ul class="footer-contact-list">
+              <li class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span data-bind="collegeAddress">[COLLEGE ADDRESS, TECH ROAD, INNOVATION ENCLAVE, PIN - 560001]</span>
+              </li>
+              <li class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <a href="mailto:fest2026@[COLLEGE-DOMAIN].edu.in" data-bind="collegeEmail">fest2026@[COLLEGE-DOMAIN].edu.in</a>
+              </li>
+              <li class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <a href="tel:+919876543210" data-bind="collegePhone">+91 98765 43210</a>
+              </li>
+              <li class="footer-contact-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-bind="eventDate">[EVENT DATE]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="footer-bottom-bar">
+          <div>
+            &copy; 2026 <span data-bind="festName">INNOVA TECH FEST 2026</span> | <span data-bind="collegeName">[COLLEGE NAME]</span>. All Rights Reserved.
+          </div>
+          <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top">
+            <span>Back to Top</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 13. FLOATING EMERGENCY QUICK HELP BUTTON & SHEET -->
+    <button class="floating-emergency-trigger" id="floating-emergency-btn" aria-label="Emergency Help Quick Dial">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <span>Emergency Quick Dial</span>
+    </button>
+
+    <!-- Emergency Sheet Modal -->
+    <div class="emergency-sheet-modal" id="emergency-sheet-modal" role="dialog" aria-modal="true" aria-label="Emergency Help Desk Directory">
+      <div class="emergency-sheet-container">
+        <div class="emergency-sheet-header">
+          <div class="emergency-sheet-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h3>Fest Emergency & Quick Help</h3>
+          </div>
+          <button class="modal-close-btn" id="emergency-sheet-close" aria-label="Close Emergency Window">&times;</button>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+          One-tap direct phone and WhatsApp dialing for immediate assistance during the festival.
+        </p>
+
+        <div class="emergency-contacts-list" id="emergency-sheet-list">
+          <!-- Dynamically populated from fest-data.js -->
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button class="btn btn-secondary" style="width: 100%;" onclick="closeEmergencySheet()">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End .content-wrapper -->
+
+  <!-- Application Scripts -->
+  <script src="js/fest-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
